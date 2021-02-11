@@ -11,6 +11,19 @@ let teamArray = [];
 const managerQuestions = [
     {
         type: "input",
+        name: "teamName",
+        message: "What is your team name?" + "(Required)",
+        validate: nameInput => {
+            if (nameInput) {
+              return true;
+            } else {
+              console.log('Please enter the name of the team!');
+              return false;
+            }
+          }
+    },
+    {
+        type: "input",
         name: "managerName",
         message: "What is the Manager's name?" + "(Required)",
         validate: nameInput => {
@@ -180,7 +193,8 @@ function addManager() {
         const id = data.managerId
         const email = data.managerEmail
         const officeNumber = data.officeNumber
-        const manager = new Manager(name, id, email, officeNumber)
+        const teamName = data.teamName
+        const manager = new Manager(name, id, email, officeNumber, teamName)
         teamArray.push(manager)
         console.log(teamArray)
         addTeamMembers()
@@ -252,13 +266,13 @@ function finishTeam() {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>My Team</title>
+            <title>${teamArray[0].teamName}</title>
             <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="./styles.css">
         </head>
         <body>
             <div class="banner-bar">
-                <h1>My Team</h1>
+                <h1>${teamArray[0].teamName}</h1>
             </div>
             <div class="card-container">
             `
