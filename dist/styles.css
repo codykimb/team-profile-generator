@@ -27,7 +27,7 @@ li {
     font-family: 'Arial', sans-serif;
     position: relative;
     left: 12px;
-    padding: 20px;
+    padding: 10px;
 }
 h2 {
     font-family: 'Arial', sans-serif;
@@ -49,11 +49,11 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 60vw;
+    width: 90%;
 }
 .card-top {
     background-color: steelblue;
-    border: 2px solid black;
+    border: 2px solid  steelblue;
     width: 246px;
     border-top-left-radius: 10px;
 }
