@@ -6,6 +6,7 @@ const Engineer = require("./lib/Engineer")
 const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 
+let teamArray = [];
 
 const managerQuestions = [
     {
@@ -180,7 +181,7 @@ function addManager() {
         const email = data.email
         const officeNumber = data.officeNumber
         const manager = new Manager(name, id, email, officeNumber)
-        // teamArray.push(manager)
+        teamArray.push(manager)
         addTeamMembers();
     })
 }
@@ -219,7 +220,7 @@ function addEngineer() {
         const email = data.email
         const github = data.github
         const engineer = new Engineer(name, id, email, github)
-        // teamArray.push(engineer)
+        teamArray.push(engineer)
         addTeamMembers()
     })
 }
@@ -232,13 +233,77 @@ function addIntern() {
         const email = data.email
         const school = data.school
         const intern = new Intern(name, id, email, school)
-        // teamArray.push(intern)
+        teamArray.push(intern)
         addTeamMembers()
     })
 }
 
 function finishTeam() {
     console.log("You have finished building your team!")
+
+    const htmlArray = []
+    const htmlBeginning = `
+    <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>My Team</title>
+            <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="./styles.css">
+        </head>
+        <body>
+            <div class="banner-bar">
+                <h1>My Team</h1>
+            </div>
+            <div class="card-container">
+            `
+            htmlArray.push(htmlBeginning);
+
+            for (let i = 1; i < teamArray.length; i++) {
+                let object = `
+                <div class="member-card">
+                    <div class="card-top">
+                        <h2>${teamArray[i].name}</h2>
+                        <h2>${teamArray[i].title}</h2>
+                    </div>
+                    <div class="card-bottom list-group">
+                        <li class="list-group-item">Employee ID: ${teamArray[i].id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a>></li>
+                `
+                if (teamArray[i].officeNumber) {
+                    object += `
+                    <li class="list-group-item">${teamArray[i].officeNumber}</li>
+                    `
+                }
+                if (teamArray[i].github) {
+                    object += `
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${teamArray[i].github}">${teamArray[i].github}</a></li>
+                    `
+                }
+                if (teamArray[i].school) {
+                    object += `
+                    <li class="list-group-item">School: ${teamArray[i].school}</li>
+                    `
+                }
+                object += `
+                </div>
+                </div>
+                `
+                htmlArray.push(object)
+            }
+
+    const htmlEnd = `
+            </div>
+            </body>
+            </html>
+            `
+    htmlArray.push(htmlEnd);
+
+    fs.writeFile(`./dist/myteam.html`, htmlArray.join(""), function (err) {
+        
+    })
 }
 
 addManager();
