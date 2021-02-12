@@ -1,14 +1,19 @@
+//inquierer
 const inquirer = require('inquirer');
 
+//classes
 const Employee = require("./lib/Employee")
 const Engineer = require("./lib/Engineer")
 const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 
+// require HTML template
 const {finishTeam} = require("./src/pagetemplate.js")
 
+//empty array to push team members objects
 let teamArray = [];
 
+//question sets
 const managerQuestions = [
     {
         type: "input",
@@ -187,6 +192,7 @@ const internQuestions = [
     }
 ];
 
+//initialize app, add team name, add manager, push to array, ask to add more team members
 function addManager() {
     inquirer.prompt(managerQuestions)
     .then(function(data) {
@@ -201,6 +207,7 @@ function addManager() {
     })
 }
 
+// ask: add an engineer, add an intern, or finish team?
 function addTeamMembers() {
     inquirer.prompt([
         {
@@ -227,6 +234,7 @@ function addTeamMembers() {
     })
 }
 
+// add a new engineer, push to array, and then ask to add more team members
 function addEngineer() {
     inquirer.prompt(engineerQuestions)
     .then(function(data) {
@@ -240,6 +248,7 @@ function addEngineer() {
     })
 }
 
+// add a new intern, push to array, and then ask to add more team members
 function addIntern() {
     inquirer.prompt(internQuestions)
     .then(function(data) {
@@ -253,4 +262,5 @@ function addIntern() {
     })
 }
 
+// call to initialize app and ask first question
 addManager();

@@ -24,37 +24,39 @@ function finishTeam(team) {
             htmlArray.push(htmlBeginning);
 
             for (let i = 0; i < team.length; i++) {
-                let object = `
+                let memberCards = `
                 <div class="member-card">
                     <div class="card-top">
                         <h2>${team[i].name}</h2>`
                         if (team[i].getRole() === "Manager") {
-                            object += `<h2><i class="fas fa-user-tie"></i>`
+                            memberCards += `<h2><i class="fas fa-user-tie"></i>`
                         }
                         if (team[i].getRole() === "Engineer") {
-                            object += `<h2><i class="fas fa-code-branch"></i>`
+                            memberCards += `<h2><i class="fas fa-code-branch"></i>`
                         }
                         if (team[i].getRole() === "Intern") {
-                            object += `<h2><i class="fas fa-graduation-cap"></i>`
+                            memberCards += `<h2><i class="fas fa-graduation-cap"></i>`
                         }
-                        object += ` ${team[i].getRole()}</h2>
+                        memberCards += ` ${team[i].getRole()}</h2>
                     </div>
                     <div class="card-bottom list-group">
                         <li>Employee ID: ${team[i].id}</li>
-                        <li>Email: <a href="mailto:${team[i].email}">${team[i].email}</a></li>`
+                        <li>Email: <a href="mailto:${team[i].email}">${team[i].email}</a></li>
+                        `
                 if (team[i].officeNumber) {
-                    object += `<li>Office Number: ${team[i].officeNumber}</li>`
+                    memberCards += `<li>Office Number: ${team[i].officeNumber}</li>`
                 }
                 if (team[i].github) {
-                    object += `<li class="list-group-item">GitHub: <a href="https://github.com/${team[i].github}" target="_blank">${team[i].github}</a></li>`
+                    memberCards += `<li class="list-group-item">GitHub: <a href="https://github.com/${team[i].github}" target="_blank">${team[i].github}</a></li>`
                 }
                 if (team[i].school) {
-                    object += `<li class="list-group-item">School: ${team[i].school}</li>`
+                    memberCards += `<li class="list-group-item">School: ${team[i].school}</li>`
                 }
-                object += `</div>
+                memberCards += `
+                    </div>
                 </div>
                 `
-                htmlArray.push(object)
+                htmlArray.push(memberCards)
             }
 
     const htmlEnd = `
