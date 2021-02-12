@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function finishTeam(teamArray) {
+function finishTeam(team) {
     console.log("You have finished building your team!")
 
     const htmlArray = []
@@ -11,35 +11,45 @@ function finishTeam(teamArray) {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>${teamArray[0].teamName}</title>
+            <title>${team[0].teamName}</title>
+            <script src="https://kit.fontawesome.com/98884ac5c0.js" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="./styles.css">
         </head>
         <body>
             <div class="banner-bar">
-                <h1>${teamArray[0].teamName}</h1>
+                <h1>${team[0].teamName}</h1>
             </div>
             <div class="card-container">
             `
             htmlArray.push(htmlBeginning);
 
-            for (let i = 0; i < teamArray.length; i++) {
+            for (let i = 0; i < team.length; i++) {
                 let object = `
                 <div class="member-card">
                     <div class="card-top">
-                        <h2>${teamArray[i].name}</h2>
-                        <h2>${teamArray[i].getRole()}</h2>
+                        <h2>${team[i].name}</h2>`
+                        if (team[i].getRole() === "Manager") {
+                            object += `<h2><i class="fas fa-user-tie"></i>`
+                        }
+                        if (team[i].getRole() === "Engineer") {
+                            object += `<h2><i class="fas fa-code-branch"></i>`
+                        }
+                        if (team[i].getRole() === "Intern") {
+                            object += `<h2><i class="fas fa-graduation-cap"></i>`
+                        }
+                        object += ` ${team[i].getRole()}</h2>
                     </div>
                     <div class="card-bottom list-group">
-                        <li>Employee ID: ${teamArray[i].id}</li>
-                        <li>Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>`
-                if (teamArray[i].officeNumber) {
-                    object += `<li>Office Number: ${teamArray[i].officeNumber}</li>`
+                        <li>Employee ID: ${team[i].id}</li>
+                        <li>Email: <a href="mailto:${team[i].email}">${team[i].email}</a></li>`
+                if (team[i].officeNumber) {
+                    object += `<li>Office Number: ${team[i].officeNumber}</li>`
                 }
-                if (teamArray[i].github) {
-                    object += `<li class="list-group-item">GitHub: <a href="https://github.com/${teamArray[i].github}" target="_blank">${teamArray[i].github}</a></li>`
+                if (team[i].github) {
+                    object += `<li class="list-group-item">GitHub: <a href="https://github.com/${team[i].github}" target="_blank">${team[i].github}</a></li>`
                 }
-                if (teamArray[i].school) {
-                    object += `<li class="list-group-item">School: ${teamArray[i].school}</li>`
+                if (team[i].school) {
+                    object += `<li class="list-group-item">School: ${team[i].school}</li>`
                 }
                 object += `</div>
                 </div>
