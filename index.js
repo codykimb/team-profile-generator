@@ -72,10 +72,10 @@ const managerQuestions = [
         name: "officeNumber",
         message: "What is the Manager's office number?" + "(Required)",
         validate: nameInput => {
-            if (nameInput) {
+            if (typeof nameInput === "numb") {
               return true;
             } else {
-              console.log('Please enter the name of the Manager!');
+              console.log('Please enter their office number!');
               return false;
             }
           }
@@ -130,7 +130,7 @@ const engineerQuestions = [
             if (nameInput) {
               return true;
             } else {
-              console.log('Please enter the name of the Manager!');
+              console.log('Please enter their GitHub username!');
               return false;
             }
           }
