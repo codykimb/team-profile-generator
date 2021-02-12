@@ -15,18 +15,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 15vh;
 }
 h1 {
     font-family: 'Futura';
-    font-size: 8vw;
+    font-size: 7vw;
     padding: 5px;
 }
 li {
     font-family: 'Arial', sans-serif;
     position: relative;
     padding: 11px;
-    margin: 3px;
+    margin: 4px;
     display: block;
     background-color: whitesmoke;
     border-radius: 2px;
@@ -39,7 +39,7 @@ h2 {
 }
 .member-card {
     width: 250px;
-    height: 220px;
+    height: 250px;
     margin-bottom: 5vh;
     background-color: rgba(112, 128, 144, 0.468);
     box-shadow: 2px 5px 5px black;
@@ -47,7 +47,7 @@ h2 {
 }
 .card-container {
     position: absolute;
-    top: 26vh;
+    top: 20vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -61,6 +61,7 @@ h2 {
     color: whitesmoke;
 }
 .card-bottom {
+    margin: 15px 10px;
     flex-direction: column;
     align-content: center;
     list-style-type: none;
