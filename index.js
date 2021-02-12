@@ -267,7 +267,6 @@ function finishTeam() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>${teamArray[0].teamName}</title>
-            <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="./styles.css">
         </head>
         <body>
@@ -286,12 +285,12 @@ function finishTeam() {
                         <h2>${teamArray[i].getRole()}</h2>
                     </div>
                     <div class="card-bottom list-group">
-                        <li class="list-group-item">Employee ID: ${teamArray[i].id}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
+                        <li>Employee ID: ${teamArray[i].id}</li>
+                        <li>Email: <a href="mailto:${teamArray[i].email}">${teamArray[i].email}</a></li>
                 `
                 if (teamArray[i].officeNumber) {
                     object += `
-                    <li class="list-group-item">Office Number: ${teamArray[i].officeNumber}</li>
+                    <li>Office Number: ${teamArray[i].officeNumber}</li>
                     `
                 }
                 if (teamArray[i].github) {
