@@ -1,4 +1,4 @@
-//inquierer
+//inquirer
 const inquirer = require('inquirer');
 
 //classes
