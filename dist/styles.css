@@ -29,6 +29,7 @@ li {
     margin: 3px;
     display: block;
     background-color: whitesmoke;
+    border-radius: 2px;
 }
 h2 {
     font-family: 'Arial', sans-serif;
