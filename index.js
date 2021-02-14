@@ -72,8 +72,8 @@ const managerQuestions = [
         name: "officeNumber",
         message: "What is the Manager's office number?" + "(Required)",
         validate: nameInput => {
-            if (typeof nameInput === "numb") {
-              return true;
+            if (nameInput) {
+                return true;
             } else {
               console.log('Please enter their office number!');
               return false;
