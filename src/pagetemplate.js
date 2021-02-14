@@ -24,7 +24,7 @@ function finishTeam(team) {
             <div class="card-container">
             `
             htmlArray.push(htmlTop);
-            
+
     //  MEMBER CARDS
     for (let i = 0; i < team.length; i++) {
         let memberCards = `
@@ -44,7 +44,7 @@ function finishTeam(team) {
             </div>
             <div class="card-bottom list-group">
                 <li>Employee ID: ${team[i].id}</li>
-                <li>Email: <a href="mailto:${team[i].email}">${team[i].email}</a></li>
+                <li>Email: <a href="mailto:${team[i].email}" target="_blank">${team[i].email}</a></li>
                 `
         if (team[i].officeNumber) {
             memberCards += `<li>Office Number: ${team[i].officeNumber}</li>`
